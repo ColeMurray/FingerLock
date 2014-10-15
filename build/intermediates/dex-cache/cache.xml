@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<pre-dex-items>
+
+    <item
+        dex="Z:\Documents\Programming\AndroidStudioProjects\FingerLock\app\build\intermediates\pre-dexed\debug\sdk-v1.0.0-16b2264ff4a822ad84b4bd6fb3a2a51c7f38529a.jar"
+        jar="Z:\Documents\Programming\AndroidStudioProjects\FingerLock\app\libs\sdk-v1.0.0.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="e2ce3786b6e9519934c4a54aaaaf39525bf4486c"/>
+    <item
+        dex="Z:\Documents\Programming\AndroidStudioProjects\FingerLock\app\build\intermediates\pre-dexed\debug\pass-v1.1.0-19aba6749a6c08bd333689b3affca0a904c29978.jar"
+        jar="Z:\Documents\Programming\AndroidStudioProjects\FingerLock\app\libs\pass-v1.1.0.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="a4d4696b3afc9d2147093c31b9c2f63b0a0f74e2"/>
+
+</pre-dex-items>

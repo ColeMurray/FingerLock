@@ -11,6 +11,7 @@ import com.murraycole.fingerlock.receiver.LockStateReceiver;
 
 
 public class LockScreenService extends Service {
+
     BroadcastReceiver mReceiver;
     @Override
     public IBinder onBind(Intent intent) {

@@ -8,11 +8,15 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.os.Build;
+import android.widget.TextView;
 
 import com.murraycole.fingerlock.service.LockScreenService;
+
+import org.w3c.dom.Text;
 
 
 public class LockScreenActivity extends Activity {
@@ -24,6 +28,15 @@ public class LockScreenActivity extends Activity {
 
 
         setContentView(R.layout.activity_lock_screen);
+
+        TextView unlockTextView = (TextView) findViewById(R.id.button);
+        unlockTextView.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                unlockScreen(view);
+                return true;
+            }
+        });
        /* if (savedInstanceState == null) {
             getFragmentManager().beginTransaction()
                     .add(R.id.container, new PlaceholderFragment())
@@ -56,7 +69,10 @@ public class LockScreenActivity extends Activity {
         return;
     }
     public void unlockScreen(View view){
-        this.finish();
+        FingerPrintScanner fingerPrintScanner = new FingerPrintScanner(this);
+        fingerPrintScanner.startIdentify();
+
+        //this.finish();
     }
 
 

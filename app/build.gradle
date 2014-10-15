@@ -20,5 +20,7 @@ android {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    compile files('libs/pass-v1.1.0.jar')
+    compile files('libs/sdk-v1.0.0.jar')
 }
