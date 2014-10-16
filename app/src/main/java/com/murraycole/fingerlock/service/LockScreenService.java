@@ -3,10 +3,13 @@ package com.murraycole.fingerlock.service;
 import android.app.KeyguardManager;
 import android.app.Service;
 import android.content.BroadcastReceiver;
+import android.content.ComponentName;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.pm.PackageManager;
 import android.os.IBinder;
 
+import com.murraycole.fingerlock.LockScreenActivity;
 import com.murraycole.fingerlock.receiver.LockStateReceiver;
 
 
@@ -31,6 +34,8 @@ public class LockScreenService extends Service {
 
         mReceiver = new LockStateReceiver();
         registerReceiver(mReceiver,filter);
+
+
         super.onCreate();
     }
 

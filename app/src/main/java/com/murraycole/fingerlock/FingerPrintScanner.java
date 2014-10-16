@@ -1,8 +1,10 @@
 package com.murraycole.fingerlock;
 
 import android.app.Activity;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.util.Log;
 import android.widget.ArrayAdapter;
@@ -22,7 +24,7 @@ public class FingerPrintScanner {
     public static final String LOG_TAG = FingerPrintScanner.class.getSimpleName();
     private SpassFingerprint mSpassFingerprint;
     private Spass mSpass;
-    private Context mContext;
+    private static Context mContext;
     private ListView mListView;
     private List<String> mItemArray = new ArrayList<String>();
     private ArrayAdapter<String> mListAdapter;
@@ -46,23 +48,29 @@ public class FingerPrintScanner {
             if (eventStatus == SpassFingerprint.STATUS_AUTHENTIFICATION_SUCCESS) {
                 Log.d(LOG_TAG, "SUCCESS");
                 //      log("onFinished() : Identify authentification Success with FingerprintIndex " + FingerprintIndex);
+
+
                 //Thumb
                 if (FingerprintIndex == 1 ){
                     //go to homescreen
                     ((Activity)mContext).finish();
-                    //LockScreenActivity.finish();
+
+
+
                 }
                 else if (FingerprintIndex == 2){
                     Intent view = new Intent (Intent.ACTION_DIAL);
 
-
-
                     mContext.startActivity(view);
+                    ((Activity)mContext).finish();
                 }
                 else{ if (FingerprintIndex == 3){
                     Intent browserIntent = new Intent (Intent.ACTION_VIEW, Uri.parse("http://"));
+
                     mContext.startActivity(browserIntent);
+                    ((Activity) mContext).finish();
                 }
+
 
                 }
 

@@ -3,7 +3,10 @@ package com.murraycole.fingerlock;
 import android.app.Activity;
 import android.app.ActionBar;
 import android.app.Fragment;
+import android.content.ComponentName;
+import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -20,6 +23,18 @@ import org.w3c.dom.Text;
 
 
 public class LockScreenActivity extends Activity {
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        disableForTrueHomeScreen(this);
+    }
+    private static void disableForTrueHomeScreen(Context mContext){
+        PackageManager pm = mContext.getPackageManager();
+        ComponentName componentName = new ComponentName(mContext,LockScreenActivity.class);
+        pm.setComponentEnabledSetting(componentName,
+                PackageManager.COMPONENT_ENABLED_STATE_DISABLED,
+                PackageManager.DONT_KILL_APP);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
