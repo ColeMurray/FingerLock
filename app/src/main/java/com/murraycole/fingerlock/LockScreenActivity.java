@@ -1,25 +1,21 @@
 package com.murraycole.fingerlock;
 
 import android.app.Activity;
-import android.app.ActionBar;
-import android.app.Fragment;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
-import android.view.LayoutInflater;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewGroup;
-import android.os.Build;
 import android.widget.TextView;
 
 import com.murraycole.fingerlock.service.LockScreenService;
-
-import org.w3c.dom.Text;
+import com.samsung.android.sdk.SsdkUnsupportedException;
+import com.samsung.android.sdk.pass.Spass;
 
 
 public class LockScreenActivity extends Activity {
@@ -85,7 +81,17 @@ public class LockScreenActivity extends Activity {
     }
     public void unlockScreen(View view){
         FingerPrintScanner fingerPrintScanner = new FingerPrintScanner(this);
-        fingerPrintScanner.startIdentify();
+
+        Spass mSpass = new Spass();
+        try {
+           mSpass.initialize(this);
+           fingerPrintScanner.startIdentify();
+        } catch (SsdkUnsupportedException e) {
+            // Error
+            Log.d("DA", "FingerPrint not supported");
+            this.finish();
+        }
+
 
         //this.finish();
     }

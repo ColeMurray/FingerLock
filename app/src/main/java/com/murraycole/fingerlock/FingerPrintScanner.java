@@ -1,16 +1,13 @@
 package com.murraycole.fingerlock;
 
 import android.app.Activity;
-import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-import com.samsung.android.sdk.SsdkUnsupportedException;
 import com.samsung.android.sdk.pass.Spass;
 import com.samsung.android.sdk.pass.SpassFingerprint;
 
@@ -51,25 +48,25 @@ public class FingerPrintScanner {
 
 
                 //Thumb
-                if (FingerprintIndex == 1 ){
+                if (FingerprintIndex == 1) {
                     //go to homescreen
-                    ((Activity)mContext).finish();
-
-
-
-                }
-                else if (FingerprintIndex == 2){
-                    Intent view = new Intent (Intent.ACTION_DIAL);
-
-                    mContext.startActivity(view);
-                    ((Activity)mContext).finish();
-                }
-                else{ if (FingerprintIndex == 3){
-                    Intent browserIntent = new Intent (Intent.ACTION_VIEW, Uri.parse("http://"));
-
-                    mContext.startActivity(browserIntent);
                     ((Activity) mContext).finish();
-                }
+
+
+                } else if (FingerprintIndex == 2) {
+                    //  Intent view = new Intent (Intent.ACTION_DIAL);
+                    // intent for all apps
+
+                    Log.d(LOG_TAG, ((Activity) mContext).getLocalClassName());
+                    //   mContext.startActivity(view);
+                    ((Activity) mContext).finish();
+                } else {
+                    if (FingerprintIndex == 3) {
+                        Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://"));
+
+                        mContext.startActivity(browserIntent);
+                        ((Activity) mContext).finish();
+                    }
 
 
                 }
@@ -84,7 +81,7 @@ public class FingerPrintScanner {
 
         @Override
         public void onReady() {
-            Log.d(LOG_TAG,"Ready for fingerprint");
+            Log.d(LOG_TAG, "Ready for fingerprint");
             // log("identify state is ready");
         }
 
@@ -96,28 +93,17 @@ public class FingerPrintScanner {
     };
 
 
-    public FingerPrintScanner(Context context ){
+    public FingerPrintScanner(Context context) {
         mContext = context;
     }
 
-    public void startIdentify(){
+    public void startIdentify() {
         mSpassFingerprint = new SpassFingerprint(mContext);
         isFeatureEnabled = mSpassFingerprint.hasRegisteredFinger();
         if (isFeatureEnabled) {
-            if (onReadyIdentify == false){
-
+            if (onReadyIdentify) {
+                mSpassFingerprint.startIdentifyWithDialog(mContext, listener, false);
             }
-
-            mSpass = new Spass();
-            try {
-                mSpass.initialize(mContext);
-            } catch (SsdkUnsupportedException e) {
-                // Error
-            }
-            if (mSpass.isFeatureEnabled(Spass.DEVICE_FINGERPRINT_CUSTOMIZED_DIALOG)){
-                mSpassFingerprint.setDialogBgTransparency(255);
-            }
-            mSpassFingerprint.startIdentifyWithDialog(mContext, listener, false);
         }
     }
 
