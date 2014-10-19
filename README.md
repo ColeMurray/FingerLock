@@ -3,8 +3,11 @@ FingerLock
 
 LockScreen Fingerprint scanner
 
-##Update: project has been open-sourced. FingerDialog is working, 
-launcher overrides homebutton. UI needs to be implemented
+##Update: project has been open-sourced. 
+
+FingerDialog is working, 
+launcher overrides homebutton.
+UI needs to be implemented
 
 
 
