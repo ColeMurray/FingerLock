@@ -8,6 +8,9 @@ import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.provider.ContactsContract;
+import android.telephony.PhoneStateListener;
+import android.telephony.TelephonyManager;
 import android.text.format.Time;
 import android.util.Log;
 import android.view.Menu;
@@ -45,11 +48,6 @@ public class LockScreenActivity extends Activity {
             String currentDate = time.format("%a, %h %e");
 
             Log.d(LOG_TAG,currentTime);
-
-
-
-
-
             clock.setText(currentTime);
             dateTime.setText(currentDate);
         }
@@ -87,6 +85,8 @@ public class LockScreenActivity extends Activity {
                 return true;
             }
         });
+
+
 
 
 
