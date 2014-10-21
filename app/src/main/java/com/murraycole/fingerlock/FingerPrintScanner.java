@@ -101,9 +101,7 @@ public class FingerPrintScanner {
         mSpassFingerprint = new SpassFingerprint(mContext);
         isFeatureEnabled = mSpassFingerprint.hasRegisteredFinger();
         if (isFeatureEnabled) {
-
                 mSpassFingerprint.startIdentifyWithDialog(mContext, listener, false);
-
         }
     }
 
