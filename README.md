@@ -3,7 +3,26 @@ FingerLock
 
 LockScreen Fingerprint scanner
 
-### Milestone 0:
+##Update: project has been open-sourced. 
+
+FingerDialog is working, 
+launcher overrides homebutton.
+UI needs to be implemented
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+### Milestone 0: 
 * LockScreen Opens/ closes according to proper usage
 
 ### Milestone 1:
@@ -17,3 +36,7 @@ LockScreen Fingerprint scanner
 ### Milestone 3:
 * Run final tests
 * Release!
+* 
+
+
+

@@ -5,4 +5,14 @@
         <!-- Customize your theme here. -->
     </style>
 
+    <style name = "serviceRatingBar" parent="@android:style/Widget.RatingBar">
+        <item name="android:progressDrawable">@drawable/service_bar</item>
+        <item name="android:scaleType">center</item>
+        <item name = "android:minHeight">8dip</item>
+        <item name = "android:maxHeight">8dip</item>
+
+
+
+    </style>
+
 </resources>
